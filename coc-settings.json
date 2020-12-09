@@ -1,2 +1,5 @@
 {
+  "rust-analyzer.cargo-watch.enable": false,
+  "rust-analyzer.serverPath": "~/.cargo-target/release/rust-analyzer",
+  "python.venvPath": "~/.virtualenvs"
 }

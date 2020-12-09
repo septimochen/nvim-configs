@@ -15,13 +15,15 @@ call plug#begin()
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-commentary'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 Plug 'preservim/nerdtree'
-Plug 'tpope/vim-commentary'
+Plug 'ryanoasis/vim-devicons'
+Plug 'chriskempson/base16-vim'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -36,8 +38,8 @@ Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
-"Plug 'fatih/vim-go'
-Plug 'dag/vim-fish'
+" Plug 'fatih/vim-go'
+" Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
@@ -59,7 +61,6 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
 endif
 set background=dark
 let base16colorspace=256
-" let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
 colorscheme base16-gruvbox-dark-hard
 syntax on
 hi Normal ctermbg=NONE
@@ -145,10 +146,10 @@ set cmdheight=2
 set updatetime=300
 
 " Golang
-let g:go_play_open_browser = 0
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-let g:go_bin_path = expand("~/dev/go/bin")
+" let g:go_play_open_browser = 0
+" let g:go_fmt_fail_silently = 1
+" let g:go_fmt_command = "goimports"
+" let g:go_bin_path = expand("~/dev/go/bin")
 
 " =============================================================================
 " # Editor settings
@@ -190,9 +191,9 @@ set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 " Use wide tabs
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set noexpandtab
 
 " Wrapping options
@@ -238,7 +239,7 @@ set diffopt+=iwhite " No whitespace in vimdiff
 " Make diffing better: https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience
 set diffopt+=indent-heuristic
-set colorcolumn=80 " and give me a colored column
+set colorcolumn=100 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
@@ -276,7 +277,6 @@ cnoremap <C-k> <C-c>
 onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
-
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
@@ -285,6 +285,8 @@ nnoremap <C-h> :nohlsearch<cr>
 inoremap <C-f> :sus<cr>
 vnoremap <C-f> :sus<cr>
 nnoremap <C-f> :sus<cr>
+
+" Comment
 
 " Jump to start and end of line using the home row keys
 map H ^
@@ -322,14 +324,14 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
 nnoremap <down> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 
 " Left and right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
+" nnoremap <left> :bp<CR>
+" nnoremap <right> :bn<CR>
 
 " Move by line
 nnoremap j gj
@@ -428,6 +430,7 @@ noremap <leader>m ct_
 " I can type :help on my own, thanks.
 map <F1> <Esc>
 imap <F1> <Esc>
+
 
 map <silent> <C-n> :NERDTreeToggle<CR>
 " =============================================================================
