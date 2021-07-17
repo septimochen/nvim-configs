@@ -397,9 +397,6 @@ if has("autocmd")
   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Follow Rust code style rules
-au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
-au Filetype rust set colorcolumn=90
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
@@ -408,9 +405,6 @@ autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
-
-" Script plugins
-autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 
 " =============================================================================
 " # Footer
