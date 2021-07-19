@@ -19,10 +19,19 @@ set background=dark
 set nobackup
 set hlsearch
 set showcmd
-set cmdheight=1
+set cmdheight=2
+set updatetime=300
 set laststatus=2
-set scrolloff=10
+set scrolloff=2
+set noshowmode
+set hidden
+set noswapfile
+set nojoinspaces
 set expandtab
+set printfont=h10
+set printencoding=utf-8
+set printoptions=paper:letter
+set signcolumn=yes
 "let loaded_matchparen = 1
 set shell=/bin/bash
 set backupskip=/tmp/*,/private/tmp/*
@@ -47,8 +56,18 @@ set ignorecase
 set smarttab
 " indents
 filetype plugin indent on
-set shiftwidth=2
-set tabstop=2
+
+" Use wide tabs
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set noexpandtab
+
+" Decent wildmenu
+set wildmenu
+set wildmode=list:longest
+set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+
 set ai "Auto indent
 set si "Smart indent
 set nowrap "No Wrap lines
@@ -60,8 +79,12 @@ set wildignore+=*/node_modules/*
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
-" Add asterisks in block comments
-set formatoptions+=r
+" Wrapping options
+set formatoptions=tc " wrap text and comments using textwidth
+set formatoptions+=r " continue comments when pressing ENTER in I mode
+set formatoptions+=q " enable formatting of comments with gq
+set formatoptions+=n " detect lists for formatting
+set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 
 "}}}
 
