@@ -1,6 +1,6 @@
 " Fish doesn't play all that well with others
 set shell=/bin/bash
-let mapleader = "<Space>"
+" let mapleader = "\"
 
 " =============================================================================
 " # PLUGINS
@@ -19,7 +19,6 @@ Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'chriskempson/base16-vim'
 
 " Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
@@ -42,24 +41,11 @@ if has('nvim')
     noremap <C-q> :confirm qall<CR>
 end
 
-" deal with colors
-if !has('gui_running')
-  set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
-endif
-set background=dark
-let base16colorspace=256
-colorscheme base16-gruvbox-dark-hard
 syntax on
 hi Normal ctermbg=NONE
-" Brighter comments
-call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
-
 " Lightline
 let g:lightline = {
+      \ 'colorscheme': 'darcula',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -72,6 +58,29 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
+
+" Highlights "{{{
+" ---------------------------------------------------------------------
+set cursorline
+"set cursorcolumn
+
+" Set cursor line color on visual mode
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+
+highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
+
+if &term =~ "screen"
+  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+endif
+
+"}}}
 
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
@@ -130,6 +139,7 @@ set hidden
 set noswapfile
 set nowrap
 set nojoinspaces
+let g:rehash256 = 1
 set printfont=:h10
 set printencoding=utf-8
 set printoptions=paper:letter
@@ -375,7 +385,43 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 
-map <silent> <C-n> :NERDTreeToggle<CR>
+" map <silent> <C-n> :NERDTreeToggle<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Uncomment to autostart the NERDTree
+" autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '►'
+let g:NERDTreeDirArrowCollapsible = '▼'
+let NERDTreeShowLineNumbers=1
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI = 1
+let g:NERDTreeWinSize=38
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Theming
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight Normal           guifg=#dfdfdf ctermfg=15   guibg=#282c34 ctermbg=none  cterm=none
+highlight LineNr           guifg=#5b6268 ctermfg=8    guibg=#282c34 ctermbg=none  cterm=none
+highlight CursorLineNr     guifg=#202328 ctermfg=7    guifg=#5b6268 ctermbg=8     cterm=none
+highlight VertSplit        guifg=#1c1f24 ctermfg=0    guifg=#5b6268 ctermbg=8     cterm=none
+highlight Statement        guifg=#98be65 ctermfg=2    guibg=none    ctermbg=none  cterm=none
+highlight Directory        guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=none
+highlight StatusLine       guifg=#202328 ctermfg=7    guifg=#5b6268 ctermbg=8     cterm=none
+highlight StatusLineNC     guifg=#202328 ctermfg=7    guifg=#5b6268 ctermbg=8     cterm=none
+highlight NERDTreeClosable guifg=#98be65 ctermfg=2
+highlight NERDTreeOpenable guifg=#5b6268 ctermfg=8
+highlight Comment          guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=italic
+highlight Constant         guifg=#3071db ctermfg=12   guibg=none    ctermbg=none  cterm=none
+highlight Special          guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=none
+highlight Identifier       guifg=#5699af ctermfg=6    guibg=none    ctermbg=none  cterm=none
+highlight PreProc          guifg=#c678dd ctermfg=5    guibg=none    ctermbg=none  cterm=none
+highlight String           guifg=#3071db ctermfg=12   guibg=none    ctermbg=none  cterm=none
+highlight Number           guifg=#ff6c6b ctermfg=1    guibg=none    ctermbg=none  cterm=none
+highlight Function         guifg=#ff6c6b ctermfg=1    guibg=none    ctermbg=none  cterm=none
+highlight Visual           guifg=#dfdfdf ctermfg=1    guibg=#1c1f24 ctermbg=none  cterm=none
+
 " =============================================================================
 " # Autocommands
 " =============================================================================
@@ -417,3 +463,27 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+" true color
+if exists("&termguicolors") && exists("&winblend")
+  syntax enable
+  set termguicolors
+  set winblend=0
+  set wildoptions=pum
+  set pumblend=5
+  set background=dark
+  " Use NeoSolarized
+  let g:neosolarized_termtrans=1
+  runtime ./colors/NeoSolarized.vim
+  colorscheme NeoSolarized
+endif
+
+"}}}
+
+" Extras "{{{
+" ---------------------------------------------------------------------
+set exrc
+"}}}
+
+" vim: set foldmethod=marker foldlevel=0:
