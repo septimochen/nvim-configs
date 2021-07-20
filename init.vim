@@ -57,6 +57,14 @@ set smarttab
 " indents
 filetype plugin indent on
 
+" Settings needed for .lvimrc
+set exrc
+set secure
+
+" Sane splits
+set splitright
+set splitbelow
+
 " Use wide tabs
 set shiftwidth=4
 set softtabstop=4
@@ -85,6 +93,12 @@ set formatoptions+=r " continue comments when pressing ENTER in I mode
 set formatoptions+=q " enable formatting of comments with gq
 set formatoptions+=n " detect lists for formatting
 set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
+
+" Proper search
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
 
 "}}}
 
