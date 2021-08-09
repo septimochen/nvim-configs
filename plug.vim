@@ -11,6 +11,7 @@ if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
+  Plug 'simrat39/rust-tools.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -18,7 +19,6 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'kabouzeid/nvim-lspinstall'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

@@ -207,7 +207,6 @@ set lazyredraw
 set synmaxcol=500
 set laststatus=2
 set relativenumber " Relative line numbers
-set number " Also show current absolute line
 set diffopt+=iwhite " No whitespace in vimdiff
 " Make diffing better: https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience
