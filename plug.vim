@@ -9,8 +9,10 @@ Plug 'preservim/nerdtree'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
+  Plug 'nvim-lua/lsp_extensions.nvim'
+  Plug 'nvim-lua/completion-nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
