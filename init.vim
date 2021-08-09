@@ -18,33 +18,48 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
 endif
 
 
-set nocompatible
-set number
 syntax enable
-set fileencodings=utf-8,sjis,euc-jp,latin
-set encoding=utf-8
-set title
 set autoindent
 set background=dark
-set nobackup
-set hlsearch
-set showcmd
-set cmdheight=2
-set updatetime=300
-set laststatus=2
-set scrolloff=2
-set noshowmode
-set hidden
-set noswapfile
-set nojoinspaces
-set expandtab
-set printfont=h10
-set printencoding=utf-8
-set printoptions=paper:letter
-set signcolumn=yes
-"let loaded_matchparen = 1
-set shell=/bin/bash
+set backspace=2 " Backspace over newlines
 set backupskip=/tmp/*,/private/tmp/*
+set cmdheight=2
+set colorcolumn=100 " and give me a colored column
+set diffopt+=algorithm:patience
+set diffopt+=indent-heuristic
+set diffopt+=iwhite " No whitespace in vimdiff
+set encoding=utf-8
+set expandtab
+set fileencodings=utf-8,sjis,euc-jp,latin
+set guioptions-=T " Remove toolbar
+set hidden
+set hlsearch
+set laststatus=2
+set lazyredraw
+set listchars=nbsp:¬,extends:»,precedes:«,trail:•
+set mouse=a " Enable mouse usage (all modes) in terminals
+set nobackup
+set nocompatible
+set nofoldenable
+set nojoinspaces
+set noshowmode
+set noswapfile
+set number
+set printencoding=utf-8
+set printfont=h10
+set printoptions=paper:letter
+set relativenumber " Relative line numbers
+set scrolloff=2
+set shell=/bin/bash
+set shortmess+=c " don't give |ins-completion-menu| messages.
+set showcmd " Show (partial) command in status line.
+set signcolumn=yes
+set synmaxcol=500
+set title
+set ttyfast
+set updatetime=300
+set vb t_vb= " No more beeps
+
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -189,30 +204,4 @@ colorscheme tokyonight
 set exrc
 "}}}
 
-" vim: set foldmethod=marker foldlevel=0:
 
-" =============================================================================
-" # GUI settings
-" =============================================================================
-set guioptions-=T " Remove toolbar
-set vb t_vb= " No more beeps
-set backspace=2 " Backspace over newlines
-set nofoldenable
-set ttyfast
-" https://github.com/vim/vim/issues/1735#issuecomment-383353563
-set lazyredraw
-set synmaxcol=500
-set laststatus=2
-set relativenumber " Relative line numbers
-set diffopt+=iwhite " No whitespace in vimdiff
-" Make diffing better: https://vimways.org/2018/the-power-of-diff/
-set diffopt+=algorithm:patience
-set diffopt+=indent-heuristic
-set colorcolumn=100 " and give me a colored column
-set showcmd " Show (partial) command in status line.
-set mouse=a " Enable mouse usage (all modes) in terminals
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-" Show those damn hidden characters
-" Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
-set listchars=nbsp:¬,extends:»,precedes:«,trail:•
