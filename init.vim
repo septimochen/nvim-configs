@@ -24,7 +24,7 @@ set autowrite " vim-go
 set background=dark
 set backspace=2 " Backspace over newlines
 set backupskip=/tmp/*,/private/tmp/*
-set cmdheight=2
+set cmdheight=3
 set colorcolumn=100 " and give me a colored column
 set diffopt+=algorithm:patience
 set diffopt+=indent-heuristic
