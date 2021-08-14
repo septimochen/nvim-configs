@@ -20,6 +20,7 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries'}
 endif
 
 call plug#end()

@@ -20,6 +20,7 @@ endif
 
 syntax enable
 set autoindent
+set autowrite " vim-go
 set background=dark
 set backspace=2 " Backspace over newlines
 set backupskip=/tmp/*,/private/tmp/*
