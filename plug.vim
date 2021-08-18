@@ -6,6 +6,8 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
+Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries'}
+Plug 'rust-lang/rust.vim'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
@@ -20,8 +22,6 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries'}
-  Plug 'rust-lang/rust.vim'
 endif
 
 call plug#end()

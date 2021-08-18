@@ -103,7 +103,6 @@ set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 set ai "Auto indent
-set si "Smart indent
 set nowrap "No Wrap lines
 set backspace=start,eol,indent
 " Finding files - Search down into subfolders
