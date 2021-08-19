@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': 'GoUpdateBinaries'}
 Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-commentary'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
