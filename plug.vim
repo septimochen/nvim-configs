@@ -23,7 +23,6 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'simrat39/rust-tools.nvim'
 endif
 
 call plug#end()
