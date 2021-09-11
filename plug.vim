@@ -13,6 +13,7 @@ Plug 'tpope/vim-commentary'
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/lsp_extensions.nvim'
   Plug 'nvim-lua/completion-nvim'
