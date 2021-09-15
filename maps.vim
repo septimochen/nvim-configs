@@ -81,6 +81,7 @@ map L $
 " ,c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
+noremap <Leader>y "+y
 
 " Open new file adjacent to rurrent file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
